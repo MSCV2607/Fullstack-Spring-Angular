@@ -10,5 +10,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   //Cambio de titulo
-  title = 'Hola mundo Angular';
+  title:string = 'Hola mundo Angular desde Componente';
+
+  //Array de usuarios
+  users = ["Pepe", "Juan", "Maria", "Ana", "Luis", "Pedro", "Sofia", "Lucia", "Carlos", "Javier"];
 }
