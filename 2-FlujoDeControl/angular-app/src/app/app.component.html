@@ -1,0 +1,39 @@
+
+<button (click)="setVisible()">
+  <!-- Operador ternario para que el boton cambie lo que lleva dentro -->
+  {{ visible ? 'Ocultar' : 'Mostrar' }}
+</button>
+
+@if (visible) {
+  <h2>{{title}}</h2>
+
+  @if (users != undefined && users.length > 0) {
+    <table > 
+      <thead>
+        <tr>
+            <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>    
+      <tbody>
+        @for (user of users; track $index) {
+          <tr >
+            
+            <td>{{ $index + 1 }}</td>
+            <td>{{ user }}</td>
+       </tr>
+        }
+        
+      </tbody>
+    </table>
+    } @else {
+      <h2>No hay usuarios</h2>
+    }
+ 
+
+} @else {
+  <h2>Lo sentimos la pagina no esta disponible</h2>
+
+}
+
+
