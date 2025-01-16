@@ -14,5 +14,6 @@ export class AppComponent {
   title:string = 'Hola mundo Angular desde Componente';
 
   //Array de usuarios
-  users = ["Pepe", "Juan", "Maria", "Ana"];
+  //users:string[] = ["Pepe", "Juan", "Maria", "Ana"];
+  users:string[] = [];
 }

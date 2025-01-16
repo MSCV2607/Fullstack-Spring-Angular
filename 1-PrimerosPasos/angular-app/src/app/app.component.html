@@ -1,7 +1,10 @@
 <!-- Pasamos datos a la vista -->
 <h2>{{ title }}</h2>
 
-<table> 
+<!-- NgIf es un if -->
+<!--  Valido si el arreglo tiene elementos si lo tiene los muestro-->
+<!--   En caso que no se cumpla el if va a ir al isEmpty abajo del todo -->
+  <table *ngIf="(users.length > 0) else isEmpty"> 
   <thead>
     <tr>
         <th>ID</th>
@@ -16,3 +19,7 @@
     </tr>
   </tbody>
 </table>
+
+<ng-template #isEmpty>
+  <p>No hay usuarios</p>
+</ng-template>
