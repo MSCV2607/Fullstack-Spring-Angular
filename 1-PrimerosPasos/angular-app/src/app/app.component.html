@@ -1,4 +1,18 @@
 <!-- Pasamos datos a la vista -->
-<h2> {{title}} </h2>
+<h2>{{ title }}</h2>
 
-<div> {{users}} </div>
+<table> 
+  <thead>
+    <tr>
+        <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>    
+  <tbody>
+    <tr *ngFor="let user of users; index as i">
+        <!-- Etiracion de los nombres -->
+         <td>{{ i }}</td>
+         <td>{{ user }}</td>
+    </tr>
+  </tbody>
+</table>
