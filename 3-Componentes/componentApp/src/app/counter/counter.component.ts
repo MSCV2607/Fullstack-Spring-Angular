@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -13,8 +13,11 @@ export class CounterComponent implements OnInit {
   // Declaración e inicialización de la variable 'counter' con un valor inicial de 0
   counter: number = 0;
 
-  // Declaración de la propiedad de entrada 'title', que recibirá un valor desde el componente padre.
+  // Declaración de la propiedad de entrada 'title', que recibirá un valor desde el componente padre
   @Input() title!: string;
+
+  // Evento que se emitirá al componente padre con el nuevo valor del contador
+  @Output() counterEmmit: EventEmitter<number> = new EventEmitter();
 
   // Método requerido por la interfaz OnInit, que se ejecuta una vez que el componente es inicializado
   ngOnInit(): void {
@@ -33,5 +36,8 @@ export class CounterComponent implements OnInit {
 
     // Actualiza el valor del contador en localStorage con el nuevo valor convertido a string
     localStorage.setItem('counter', this.counter.toString());
+
+    // Emite el nuevo valor del contador al componente padre
+    this.counterEmmit.emit(this.counter);
   }
 }

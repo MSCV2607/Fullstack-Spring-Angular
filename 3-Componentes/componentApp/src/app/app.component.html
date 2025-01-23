@@ -1,2 +1,6 @@
 <!-- Incluye el componente CounterComponent y le pasa el valor del subtítulo mediante property binding -->
-<app-counter [title]="subTitle"></app-counter>
+<!-- Vincula el evento 'counterEmmit' del hijo al método 'setCounter' del padre -->
+<app-counter [title]="subTitle" (counterEmmit)="setCounter($event)"></app-counter>
+
+<!-- Muestra el valor del contador recibido desde el hijo -->
+<div>Padre: {{ counter }}</div>
