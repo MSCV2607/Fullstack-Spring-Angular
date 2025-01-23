@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -12,6 +12,9 @@ export class CounterComponent implements OnInit {
 
   // Declaración e inicialización de la variable 'counter' con un valor inicial de 0
   counter: number = 0;
+
+  // Declaración de la propiedad de entrada 'title', que recibirá un valor desde el componente padre.
+  @Input() title!: string;
 
   // Método requerido por la interfaz OnInit, que se ejecuta una vez que el componente es inicializado
   ngOnInit(): void {

@@ -12,4 +12,7 @@ import { CounterComponent } from './counter/counter.component';
 })
 export class AppComponent {
   title = 'componentApp';
+
+  // Subtítulo que será enviado al componente CounterComponent como una propiedad de entrada
+  subTitle = 'Contador con estado de sesion';
 }
