@@ -2,6 +2,6 @@
 export class Direccion {
     pais!: string;
     ciudad!: string;
-    direccion!: string;
+    calle!: string;
     numero!: number;
 }
