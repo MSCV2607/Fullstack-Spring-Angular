@@ -1,1 +1,51 @@
-<p>invoice works!</p>
+<div>
+    <h2>Ejemplo Factura</h2>
+    <div>
+        <ul>
+            <li>Id: {{invoice.id}}</li>
+            <li>Nombre: {{invoice.name}}</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Datos del cliente</h3>
+        <ul>
+            <li>{{invoice.cliente.nombre}}</li>
+            <li>{{invoice.cliente.apellido}}</li>
+            <li>{{invoice.cliente.direccion.pais}} / {{invoice.cliente.direccion.ciudad}}</li>
+            <li>{{invoice.cliente.direccion.calle}} / {{invoice.cliente.direccion.numero}}</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Datos de la empresa</h3>
+        <ul>
+            <li>{{invoice.compania.nombre}}</li>
+            <li>{{invoice.compania.numeroFiscal}}</li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Detalles de la factura</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of invoice.items; track $index) {
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.nombreProducto}}</td>
+                        <td>${{item.precio}}</td>
+                        <td>{{item.cantidad}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
