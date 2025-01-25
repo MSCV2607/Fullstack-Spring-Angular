@@ -9,4 +9,5 @@ export class invoice {
     compania!:Compania;
     items!: Item[];
 
+    total!:number;
 }
