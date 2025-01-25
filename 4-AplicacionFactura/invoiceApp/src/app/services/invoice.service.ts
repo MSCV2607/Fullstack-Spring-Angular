@@ -25,7 +25,7 @@ export class InvoiceService {
 
   return total;
   */
- return this.invoice.items.reduce((acc, item) => acc + item.total(), 0); //reduce es un metodo que recibe una funcion y un valor inicial
+ return this.invoice.items.reduce((total, item) => total + (item.precio*item.cantidad), 0); //reduce es un metodo que recibe una funcion y un valor inicial
 }
   
 }

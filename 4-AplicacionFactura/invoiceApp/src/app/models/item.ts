@@ -4,9 +4,8 @@ export class Item {
     nombreProducto!: string;
     precio!: number;
     cantidad!: number;
-
     total(): number {
         return this.precio * this.cantidad;
-    }
+    };
 }
 

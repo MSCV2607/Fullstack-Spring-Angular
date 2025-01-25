@@ -4,27 +4,27 @@
         <div class="card-header">
             <h2>Ejemplo Factura</h2>
         </div>
-    <div class="card-body">
-        
-        <invoice-view [id]="invoice.id" [name]="invoice.name"></invoice-view>
+        <div class="card-body">
 
-<div class="row my-3">
+            <invoice-view [id]="invoice.id" [name]="invoice.name"></invoice-view>
 
-    <div class="col">
-        <client-view [cliente]="invoice.cliente"></client-view>
+            <div class="row my-3">
+
+                <div class="col">
+                    <client-view [cliente]="invoice.cliente"></client-view>
+                </div>
+
+                <div class="col">
+                    <company-view [compania]="invoice.compania"></company-view>
+                </div>
+            </div>
+
+            <div>
+
+            </div>
+            <list-item [items]="invoice.items"></list-item>
+            <total [total]="invoice.total"/>
+        </div>
     </div>
 
-    <div class="col">
-        <company-view [compania]="invoice.compania"></company-view>
-    </div>
 </div>
-
-    <div>
-       
-    </div>
-    <list-item [items]="invoice.items"></list-item>
-</div>
-</div>
-
-</div>
-    
