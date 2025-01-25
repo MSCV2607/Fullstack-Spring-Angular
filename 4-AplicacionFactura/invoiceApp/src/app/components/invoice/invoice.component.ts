@@ -7,11 +7,12 @@ import { CompanyViewComponent } from '../company-view/company-view.component';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { RowItemComponent } from '../row-item/row-item.component';
 import { TotalComponent } from '../total/total.component';
+import { FormItemComponent } from '../form-item/form-item.component';
 
 @Component({
   selector: 'app-invoice',
   standalone: true,
-  imports: [InvoiceViewComponent, ClientViewComponent, CompanyViewComponent, ListItemComponent, TotalComponent],
+  imports: [InvoiceViewComponent, ClientViewComponent, CompanyViewComponent, ListItemComponent, TotalComponent, FormItemComponent],
   templateUrl: './invoice.component.html',
 
 })
