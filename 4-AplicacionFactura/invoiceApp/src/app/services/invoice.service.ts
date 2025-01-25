@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { invoiceData} from '../data/invoice.data';
 import { invoice } from '../models/invoice';
+import { Item } from '../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class InvoiceService {
   return total;
   */
  return this.invoice.items.reduce((total, item) => total + (item.precio*item.cantidad), 0); //reduce es un metodo que recibe una funcion y un valor inicial
+}
+
+save(item: Item) {
+  this.invoice.items = [...this.invoice.items, item];
+
+  const total = this.calculateTotal();
+  return {...this.invoice, total};
+
 }
   
 }

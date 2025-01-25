@@ -21,4 +21,16 @@ export class FormItemComponent {
     cantidad: '',
   }
 
+  onSubmit(): void {
+    this.addItemEventEmitter.emit({id: this.counterId,...this.item});
+    this.counterId++;
+
+    //Limpieza de campos del formulario
+    this.item = {
+      nombreProducto: '',
+      precio: '',
+      cantidad: '',
+    }
+  }
+
 }
