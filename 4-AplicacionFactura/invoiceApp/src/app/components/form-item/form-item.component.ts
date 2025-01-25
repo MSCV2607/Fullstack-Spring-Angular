@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Item } from '../../models/item';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'form-item',
@@ -21,16 +21,22 @@ export class FormItemComponent {
     cantidad: '',
   }
 
-  onSubmit(): void {
-    this.addItemEventEmitter.emit({id: this.counterId,...this.item});
-    this.counterId++;
-
-    //Limpieza de campos del formulario
-    this.item = {
-      nombreProducto: '',
-      precio: '',
-      cantidad: '',
+  onSubmit(itemForm: NgForm): void {
+    if (itemForm.valid) {
+      this.addItemEventEmitter.emit({id: this.counterId,...this.item});
+      this.counterId++;
+  
+      //Limpieza de campos del formulario
+      this.item = {
+        nombreProducto: '',
+        precio: '',
+        cantidad: '',
+      };
+      itemForm.reset();
+      itemForm.resetForm();
+      
     }
+  
   }
 
 }
