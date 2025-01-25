@@ -10,4 +10,5 @@ export class invoice {
     items!: Item[];
 
     total!:number;
+  static items: any;
 }

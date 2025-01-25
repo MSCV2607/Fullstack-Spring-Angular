@@ -22,7 +22,7 @@
             <div>
 
             </div>
-            <list-item [items]="invoice.items"></list-item>
+            <list-item [items]="invoice.items" (removeEventEmmiter)="removeItem($event)"></list-item>
             <total [total]="invoice.total"/>
         </div>
     </div>

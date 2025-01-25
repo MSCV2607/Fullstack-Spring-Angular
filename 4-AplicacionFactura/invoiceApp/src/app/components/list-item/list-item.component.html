@@ -8,11 +8,12 @@
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
             @for (item of items; track $index) {
-                <tr row-item [item]="item"></tr>
+                <tr row-item [item]="item" (removeEventEmmiter)="onRemove($event)"></tr>
             }
         </tbody>
     </table>

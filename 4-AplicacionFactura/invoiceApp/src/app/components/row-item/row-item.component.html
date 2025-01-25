@@ -3,4 +3,6 @@
     <td>{{item.nombreProducto}}</td>
     <td>${{item.precio}}</td>
     <td>{{item.cantidad}}</td>
+    <td><button class="btn btn-danger btn-sm"
+        (click)="onRemove(item.id)">Eliminar</button></td>
 
