@@ -11,7 +11,7 @@ import { TotalComponent } from '../total/total.component';
 @Component({
   selector: 'app-invoice',
   standalone: true,
-  imports: [InvoiceViewComponent, ClientViewComponent, CompanyViewComponent, ListItemComponent, RowItemComponent, TotalComponent],
+  imports: [InvoiceViewComponent, ClientViewComponent, CompanyViewComponent, ListItemComponent, TotalComponent],
   templateUrl: './invoice.component.html',
 
 })
@@ -25,7 +25,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   removeItem(id: number) { 
-    this.invoice.items = this.invoice.items.filter((item) => item.id !== id); //Filtra los items que no coincidan con el id
+    this.invoice = this.service.remove(id);
   }
   
 }
