@@ -1,1 +1,7 @@
-<p>client-view works!</p>
+<h3>Datos del cliente</h3>
+        <ul class="list-group">
+            <li class="list-group-item active">{{cliente.nombre}}</li>
+            <li class="list-group-item">{{cliente.apellido}}</li>
+            <li class="list-group-item">{{cliente.direccion.pais}} / {{cliente.direccion.ciudad}}</li>
+            <li class="list-group-item">{{cliente.direccion.calle}} / {{cliente.direccion.numero}}</li>
+        </ul>

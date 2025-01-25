@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Compania } from '../../models/compania';
 
 @Component({
-  selector: 'app-company-view',
+  selector: 'company-view',
   standalone: true,
   imports: [],
   templateUrl: './company-view.component.html',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class CompanyViewComponent {
 
+  @Input() compania!: Compania;
 }
