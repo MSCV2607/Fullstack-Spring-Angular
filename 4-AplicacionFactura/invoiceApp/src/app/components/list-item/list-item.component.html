@@ -1,6 +1,8 @@
+<!-- Título de la sección de detalles de la factura -->
 <h4>Detalles de la factura</h4>
+
 @if (items.length > 0) {
-    
+    <!-- Tabla para mostrar los items de la factura -->
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -13,12 +15,13 @@
         </thead>
         <tbody>
             @for (item of items; track $index) {
+                <!-- Fila de la tabla para cada item -->
                 <tr row-item [item]="item" (removeEventEmmiter)="onRemove($event)"></tr>
             }
         </tbody>
     </table>
-
 } @else {
+    <!-- Mensaje cuando no hay items en la factura -->
     <div>
         <p>No hay items en la factura</p>
     </div>

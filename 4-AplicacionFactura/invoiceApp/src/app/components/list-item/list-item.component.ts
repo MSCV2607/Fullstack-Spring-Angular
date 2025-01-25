@@ -1,20 +1,22 @@
+// Importaciones necesarias para el componente
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from '../../models/item';
 import { RowItemComponent } from '../row-item/row-item.component';
 
+// Decorador que define el componente
 @Component({
-  selector: 'list-item',
-  standalone: true,
-  imports: [RowItemComponent],
-  templateUrl: './list-item.component.html',
-
+  selector: 'list-item', // Selector del componente
+  standalone: true, // Indica que el componente es independiente
+  imports: [RowItemComponent], // Importaciones del componente
+  templateUrl: './list-item.component.html', // Ruta del archivo de plantilla HTML
 })
 export class ListItemComponent {
-@Input() items!: Item[];
+  @Input() items!: Item[]; // Propiedad de entrada que recibe una lista de items
 
-@Output() removeEventEmmiter: EventEmitter <number> = new EventEmitter();
+  @Output() removeEventEmmiter: EventEmitter<number> = new EventEmitter(); // Evento de salida para eliminar un item
 
-onRemove(id:number) {
-  this.removeEventEmmiter.emit(id);
-}
+  // Método para emitir el evento de eliminación de un item
+  onRemove(id: number) {
+    this.removeEventEmmiter.emit(id);
+  }
 }

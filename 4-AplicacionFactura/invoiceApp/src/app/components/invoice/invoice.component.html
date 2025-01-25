@@ -1,19 +1,23 @@
 <div class="container">
     <div class="card my-3">
 
+        <!-- Encabezado de la tarjeta -->
         <div class="card-header">
             <h2>Ejemplo Factura</h2>
         </div>
         <div class="card-body">
 
+            <!-- Componente para visualizar la factura -->
             <invoice-view [id]="invoice.id" [name]="invoice.name"></invoice-view>
 
             <div class="row my-3">
 
+                <!-- Columna para visualizar el cliente -->
                 <div class="col">
                     <client-view [cliente]="invoice.cliente"></client-view>
                 </div>
 
+                <!-- Columna para visualizar la compañía -->
                 <div class="col">
                     <company-view [compania]="invoice.compania"></company-view>
                 </div>
@@ -22,8 +26,11 @@
             <div>
 
             </div>
+            <!-- Componente para listar los items de la factura -->
             <list-item [items]="invoice.items" (removeEventEmmiter)="removeItem($event)"></list-item>
+            <!-- Componente para mostrar el total de la factura -->
             <total [total]="invoice.total"/>
+            <!-- Componente para agregar un nuevo item a la factura -->
             <form-item (addItemEventEmitter)="addItem($event)"></form-item>
         </div>
     </div>

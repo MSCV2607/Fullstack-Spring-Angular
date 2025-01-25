@@ -1,6 +1,9 @@
+<!-- Formulario para agregar un nuevo item -->
 <form class="w-50" (ngSubmit)="onSubmit(itemForm)" #itemForm="ngForm">
-    <input name="producto" placeholder="producto" class="form-control m3" [(ngModel)] = "item.producto" required minlength="5" #producto="ngModel">
+    <!-- Campo de entrada para el nombre del producto -->
+    <input name="producto" placeholder="producto" class="form-control m3" [(ngModel)]="item.producto" required minlength="5" #producto="ngModel">
     
+    <!-- Validación del campo de nombre del producto -->
     @if (producto.invalid && (producto.dirty || producto.touched)) {
         @if (producto.errors! ['required']) {
             <div class="alert alert-danger">
@@ -15,8 +18,10 @@
         }
     }
 
-    <input name="precio" type="number" placeholder="precio" class="form-control m3" [(ngModel)] = "item.precio" required min="10" #precio="ngModel">
+    <!-- Campo de entrada para el precio del producto -->
+    <input name="precio" type="number" placeholder="precio" class="form-control m3" [(ngModel)]="item.precio" required min="10" #precio="ngModel">
 
+    <!-- Validación del campo de precio del producto -->
     @if (precio.invalid && (precio.dirty || precio.touched)) {
         @if (precio.errors! ['required']) {
             <div class="alert alert-danger">
@@ -31,8 +36,10 @@
         }
     }
 
-    <input name="cantidad" type="number" placeholder="cantidad" class="form-control m3" [(ngModel)] = "item.cantidad" required min="1" #cantidad="ngModel">
+    <!-- Campo de entrada para la cantidad del producto -->
+    <input name="cantidad" type="number" placeholder="cantidad" class="form-control m3" [(ngModel)]="item.cantidad" required min="1" #cantidad="ngModel">
 
+    <!-- Validación del campo de cantidad del producto -->
     @if (cantidad.invalid && (cantidad.dirty || cantidad.touched)) {
         @if (cantidad.errors! ['required']) {
             <div class="alert alert-danger">
@@ -47,6 +54,6 @@
         }
     }
 
+    <!-- Botón para agregar un nuevo item, deshabilitado si el formulario es inválido -->
     <button class="btn btn-primary m-3" [disabled]="itemForm.invalid">Nuevo item</button>
-
 </form>
