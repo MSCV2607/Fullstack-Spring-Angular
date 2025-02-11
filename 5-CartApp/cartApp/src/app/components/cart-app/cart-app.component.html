@@ -1,4 +1,9 @@
 <h2 class="text-center">Catalogo de productos app</h2>
 
 <catalogo [products]="products" />
-<cart/>
+@if (items.length > 0) {
+    <cart [items]="items" />
+
+} @else {
+    <div class="alert alert-warning">NO HAY ELEMENTOS EN EL CARRO</div>
+}
