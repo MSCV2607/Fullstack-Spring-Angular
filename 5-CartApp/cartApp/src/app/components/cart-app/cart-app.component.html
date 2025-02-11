@@ -1,1 +1,18 @@
 <h2>Carro de Compras</h2>
+
+<div>
+    @for (product of products; track $index) {
+        <div>
+            <h5>
+                {{product.name}}
+                <p>
+                    {{product.description}}
+                </p>
+                <p>
+                    {{product.price}}
+                </p>
+                <button>AGREGAR ACA</button>
+            </h5>
+        </div>
+    }
+</div>
