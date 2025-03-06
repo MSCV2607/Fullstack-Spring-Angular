@@ -37,4 +37,7 @@ export class CartAppComponent implements OnInit {
     }
   }
 
+  onDeleateCart(id:number):void {
+    this.items = this.items.filter(item => item.product.id !== id);
+  }
 }
