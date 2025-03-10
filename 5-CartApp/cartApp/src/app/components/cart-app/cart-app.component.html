@@ -1,8 +1,10 @@
+<nav-bar [items]="items" (openEventEmitter)="openCart()"/>
+
+  <div class="container my-4">
+
 <h2 class="text-center">Catalogo de productos app</h2>
 
-<button class="btn btn-info btn-sm" (click)="openCart()">
-    Show Cart ({{items.length}})
-</button>
+
 
 <div class="row">
     <div class="col-9" [className]="showCart ? 'col-9' : 'col-12'">
@@ -33,6 +35,8 @@
 
     }
     
+</div>
+
 </div>
 
 
