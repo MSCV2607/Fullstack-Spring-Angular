@@ -12,6 +12,7 @@ import { ProductCardComponent } from "../product-card/product-card.component";
 export class CatalogoComponent {
 
   @Input() products: Product[] = [];
+  
 
   @Output() productEventEmitter: EventEmitter<Product> = new EventEmitter();
   onAddCart(product: Product) {

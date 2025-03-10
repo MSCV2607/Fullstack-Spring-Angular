@@ -11,6 +11,7 @@ import { CartItem } from '../../models/cartItem';
 export class CartComponent {
 
   @Input() items: CartItem[] = [];
+  @Input() total = 0;
 
   @Output() idProductoEventEmitter = new EventEmitter();
 
