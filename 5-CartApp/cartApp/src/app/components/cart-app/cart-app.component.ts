@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { CatalogoComponent } from "../catalogo/catalogo.component";
-import { CartComponent } from '../cart/cart.component';
+import { CartModalComponent } from '../cart-modal/cart-modal.component';
 import { CartItem } from '../../models/cartItem';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'cart-app',
   standalone: true,
-  imports: [CatalogoComponent, CartComponent, NavBarComponent],
+  imports: [CatalogoComponent, CartModalComponent, NavBarComponent],
   templateUrl: './cart-app.component.html',
 })
 export class CartAppComponent implements OnInit {
