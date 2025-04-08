@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { CatalogComponent } from './catalog/catalog.component';
-
 import { CartItem } from '../models/cartItem';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -20,9 +19,9 @@ export class CartAppComponent implements OnInit {
 
   items: CartItem[] = [];
 
-   total: number = 0;
+  total: number = 0;
 
-  constructor(private sharingDataService:SharingDataService, private service: ProductService) {}
+  constructor(private sharingDataService: SharingDataService, private service: ProductService) {}
 
   ngOnInit(): void {
     this.products = this.service.findAll();
@@ -52,24 +51,24 @@ export class CartAppComponent implements OnInit {
   }
 
   onDeleteCart(): void {
-    this.sharingDataService.idProductEventEmitter.subscribe( id => {
-    this.items = this.items.filter(item => item.product.id !== id);
-    if (this.items.length == 0) {
-      sessionStorage.removeItem('cart');
-      sessionStorage.clear();
-    }
-    this.calculateTotal();
-    this.saveSession();
-  })
+    this.sharingDataService.idProductEventEmitter.subscribe(id => {
+      console.log(id + ' se ha ejecutado el evento idProductEventEmitter')
+      this.items = this.items.filter(item => item.product.id !== id);
+      if (this.items.length == 0) {
+        sessionStorage.removeItem('cart');
+        sessionStorage.clear();
+      }
+      this.calculateTotal();
+      this.saveSession();
+    })
   }
 
-   calculateTotal(): void {
-     this.total = this.items.reduce((accumulator, item) => accumulator + item.quantity * item.product.price, 0);
-   }
-
-   saveSession(): void{
-     sessionStorage.setItem('cart', JSON.stringify(this.items));
+  calculateTotal(): void {
+    this.total = this.items.reduce((accumulator, item) => accumulator + item.quantity * item.product.price, 0);
   }
 
-  
+  saveSession(): void{
+    sessionStorage.setItem('cart', JSON.stringify(this.items));
+  }
+
 }
