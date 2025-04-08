@@ -20,4 +20,3 @@ export class SharingDataService {
     return this._idProductEventEmitter;
   }
 }
-
