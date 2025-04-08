@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cartApp": {
+    "3-cart-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cart-app",
+            "outputPath": "dist/3-cart-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,13 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css", 
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.min.js", 
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -61,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cartApp:build:production"
+              "buildTarget": "3-cart-app:build:production"
             },
             "development": {
-              "buildTarget": "cartApp:build:development"
+              "buildTarget": "3-cart-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "cartApp:build"
+            "buildTarget": "3-cart-app:build"
           }
         },
         "test": {

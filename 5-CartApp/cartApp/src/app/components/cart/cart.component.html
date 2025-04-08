@@ -1,4 +1,3 @@
-
 <table class="table table-hover table-striped">
     <thead>
         <tr>
@@ -9,34 +8,27 @@
             <th>Eliminar</th>
         </tr>
     </thead>
-
     <tbody>
+
         @for (item of items; track $index) {
             <tr>
-
-                    <td>{{item.product.name}}</td>
-                    <td>{{item.product.price}}</td>
-                    <td>{{item.quantity}}</td>
-                    <td> {{item.product.price * item.quantity}} </td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" (click)="onDeleateCart(item.product.id)">Eliminar
-
-                        </button>
-                    </td>
-                    
-
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.product.price * item.quantity}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm"
+                     (click)="onDeleteCart(item.product.id)">
+                        eliminar
+                    </button>
+                </td>
             </tr>
         }
     </tbody>
-    
     <tfoot>
         <tr>
-            <td colspan="4" class="text-end fw-bold">
-                Total
-            </td>
-            <td colspan="1" class="text-start fw-bold">
-                {{total}}
-            </td>
+            <td colspan="4" class="text-end fw-bold">Total</td>
+            <td colspan="1" class="text-start fw-bold">{{total}}</td>
         </tr>
     </tfoot>
 </table>

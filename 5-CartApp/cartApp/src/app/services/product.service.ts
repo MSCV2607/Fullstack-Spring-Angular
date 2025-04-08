@@ -9,7 +9,7 @@ export class ProductService {
 
   constructor() { }
 
-  findAll(): Product[] {
+  findAll(): Product[]{
     return products;
   }
 }
