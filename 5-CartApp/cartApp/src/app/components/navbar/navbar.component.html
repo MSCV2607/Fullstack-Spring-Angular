@@ -11,7 +11,10 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  role="button">Cart ({{items.length}})</a>
+                    <a 
+                    [routerLink]="['/cart']"
+                    [state]="{ items: items, total: total }"
+                    class="nav-link"  role="button">Cart ({{items.length}})</a>
                 </li>
             </ul>
         </div>

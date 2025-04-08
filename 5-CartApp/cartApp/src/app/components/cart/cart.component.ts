@@ -1,5 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { CartItem } from '../../models/cartItem';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'cart',
@@ -14,6 +15,12 @@ export class CartComponent  {
   total = 0;
   
   idProductEventEmitter = new EventEmitter();
+
+  constructor(private router:Router) {
+    this.items = this.router.getCurrentNavigation()!.extras.state?.['items'];
+    this.total = this.router.getCurrentNavigation()!.extras.state?.['total'];
+    
+  }
 
   onDeleteCart(id: number) {
     this.idProductEventEmitter.emit(id);
