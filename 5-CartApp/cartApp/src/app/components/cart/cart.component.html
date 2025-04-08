@@ -5,6 +5,9 @@
 
         </div>
         <div class="card-body">
+
+            @if(items.length > 0) {
+            
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -37,7 +40,9 @@
                         <td colspan="1" class="text-start fw-bold">{{total}}</td>
                     </tr>
                 </tfoot>
-            </table>
+            </table> } @else {
+                <div class="alert alert-warning"> CARRO VACIO </div>
+            }
         </div>
 
     </div>
