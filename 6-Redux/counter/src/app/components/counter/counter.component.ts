@@ -1,28 +1,39 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { decrement, increment, reset } from '../../store/items.action';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
   imports: [],
-  templateUrl: './counter.component.html',
-  styleUrl: './counter.component.css'
+  templateUrl: './counter.component.html'
 })
 export class CounterComponent {
 title: any = "counter redux";
 counter: number = 0;
 
+constructor(private store: Store < {counter : number} >) { 
+  //this.counter = 0;
+  this.store.select('counter').subscribe( counter  => {
+    this.counter = counter;
+  });
+}
+
 increment(): void {
-  this.counter++;
+  this.store.dispatch( increment());
+  //this.counter++;
 }
 
 
 decrement(): void {
-  this.counter--;
+  this.store.dispatch( decrement());
+  //this.counter--;
 }
 
 
 reset(): void {
-  this.counter = 0;
+  this.store.dispatch(reset());
+  //this.counter = 0;
 }
 
 }
