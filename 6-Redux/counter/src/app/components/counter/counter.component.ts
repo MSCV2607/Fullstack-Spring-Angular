@@ -20,7 +20,7 @@ constructor(private store: Store < {counter : number} >) {
 }
 
 increment(): void {
-  this.store.dispatch( increment());
+  this.store.dispatch( increment({add: 3}));
   //this.counter++;
 }
 
