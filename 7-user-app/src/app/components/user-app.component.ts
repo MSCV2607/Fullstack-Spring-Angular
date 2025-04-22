@@ -30,7 +30,12 @@ export class UserAppComponent {
   }
 
   addUser(user: User) {
+    if (user.id>0) {
+      this.users = this.users.map( u => (u.id == user.id)? {...user}: u );
+    } else {
     this.users = [... this.users, {...user, id: new Date().getTime()}];
+    }
+    this.userSelected = new User();
   }
 
   removeUser(id: number): void {
