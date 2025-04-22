@@ -21,7 +21,7 @@ export class UserFormComponent {
   }
 
   onSubmit(userForm: NgForm): void {
-    if (userForm.invalid) {
+    if (userForm.valid) {
       this.newUserEventEmitter.emit(this.user);
       console.log(this.user);
 
