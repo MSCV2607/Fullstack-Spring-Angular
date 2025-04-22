@@ -7,14 +7,15 @@
     
     <div class="row">
         <div class="col">
-            <user-form (newUserEventEmitter)="addUser($event)" />
+            <user-form [user]="userSelected" (newUserEventEmitter)="addUser($event)" />
         </div>
 
         <div class="col">
 
-           <user [users]="users" (idUserEventEmitter)="removeUser($event)"/>
+           <user [users]="users" (idUserEventEmitter)="removeUser($event)" (selectUserEventEmitter)="setSelectedUser($event)" />
 
         </div>
     </div>
 </div>
+
 

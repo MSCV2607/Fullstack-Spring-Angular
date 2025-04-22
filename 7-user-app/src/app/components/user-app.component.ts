@@ -19,7 +19,11 @@ export class UserAppComponent {
 
   users: User[] = [];
 
-  constructor(private service: UserService) { }
+  userSelected: User;
+
+  constructor(private service: UserService) { 
+    this.userSelected = new User;
+  }
 
   ngOnInit() {
     this.service.findAll().subscribe(users => this.users = users);
@@ -31,6 +35,12 @@ export class UserAppComponent {
 
   removeUser(id: number): void {
     this.users = this.users.filter(user => user.id != id);
+  }
+
+  setSelectedUser(userRow: User): void {
+
+    this.userSelected = {... userRow};
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { User } from '../../models/user';
 
@@ -11,7 +11,7 @@ import { User } from '../../models/user';
 })
 export class UserFormComponent {
 
-  user: User;
+  @Input() user: User;
 
   @Output() newUserEventEmitter: EventEmitter<User> = new EventEmitter();
 

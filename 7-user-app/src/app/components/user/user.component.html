@@ -14,6 +14,7 @@
                 <th>Email</th>
                 <th>Username</th>
                 <th>Remove</th>
+                <th>update</th>
     
             </tr>
         </thead>
@@ -29,6 +30,12 @@
                     <td>
                         <button class="btn btn-danger btn-sm" (click)="onRemoveUser(user.id)">
                             Remove
+                        </button>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-info btn-sm" (click)="onSelectUser(user)"> >
+                            Update
                         </button>
                     </td>
                 </tr>
