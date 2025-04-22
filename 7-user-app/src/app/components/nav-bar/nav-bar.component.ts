@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,4 +11,5 @@ import { RouterModule } from '@angular/router';
 })
 export class NavBarComponent {
 
+  @Input() users: User[] = [];
 }
