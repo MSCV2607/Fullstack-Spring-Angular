@@ -1,34 +1,9 @@
 <div class="container ny-4">
 
-    <h3> {{title}} </h3>
+
+    <router-outlet></router-outlet>
 
 
-    <button class="btn btn-primary" (click)="setOpen()">
-        {{open ? 'Cerrar' : 'Crear Usaurio'}}
-
-    </button>
-
-    <div class="row">
-
-       
-        <div class="col">
-
-            <user [users]="users" (idUserEventEmitter)="removeUser($event)"
-                (selectUserEventEmitter)="setSelectedUser($event)" />
-
-        </div>
-
-
-
-
-    </div>
+    
 </div>
 
-@if (open) {
-
-    <div class="abrir-modal">
-
-        
-        <user-form [user]="userSelected" (newUserEventEmitter)="addUser($event)" (openEventEmitter)="setOpen()" />
-    </div>
-}

@@ -10,6 +10,7 @@ import { User } from '../../models/user';
 })
 export class UserComponent {
 
+  title: string = 'Listado de Usuarios';
 
 
   @Input() users: User[] = [];
