@@ -6,6 +6,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import Swal from 'sweetalert2';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SharingDataService } from '../services/sharing-data.service';
 
 @Component({
   selector: 'user-app',
@@ -27,15 +28,19 @@ export class UserAppComponent {
 
 
 
-  constructor(private service: UserService) { 
+  constructor(private service: UserService, private sharingData: SharingDataService) { 
     this.userSelected = new User;
   }
 
   ngOnInit() {
     this.service.findAll().subscribe(users => this.users = users);
+    this.addUser();
+    this.setSelectedUser();
+    this.removeUser();
   }
 
-  addUser(user: User) {
+  addUser() {
+    this.sharingData.newUserEventEmitter.subscribe(user => {
     if (user.id>0) {
       this.users = this.users.map( u => (u.id == user.id)? {...user}: u );
     } else {
@@ -49,13 +54,14 @@ export class UserAppComponent {
     });
     
     this.userSelected = new User();
-
+  })
 
   }
 
   
 
-  removeUser(id: number): void {
+  removeUser(): void {
+    this.sharingData.idUserEventEmitter.subscribe(id => {
 
     Swal.fire({
       title: "Seguro que quiere eliminar?",
@@ -75,10 +81,15 @@ export class UserAppComponent {
         });
       }
     });
-
+  })
    
   }
 
 
+  setSelectedUser():void {
+    this.sharingData.selectUserEventEmitter.subscribe(userRow => {
+      this.userSelected = {... userRow};
+    })
+  }
 
 }
