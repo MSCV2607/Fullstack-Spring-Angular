@@ -3,15 +3,28 @@
     <h3> {{title}} </h3>
 
     
+    <button class="btn btn-primary" (click)="setOpen()">
+        {{open ? 'Cerrar' : 'Crear Usaurio'}}
+        
+    </button>
+
     <div class="row">
-        <div class="col">
-            <user-form [user]="userSelected" (newUserEventEmitter)="addUser($event)" />
-        </div>
 
-        <div class="col">
+        @if (open) {
+            
+            <div class="col">
+                <user-form [user]="userSelected" (newUserEventEmitter)="addUser($event)" />
+            </div>
 
-           <user [users]="users" (idUserEventEmitter)="removeUser($event)" (selectUserEventEmitter)="setSelectedUser($event)" />
+        } @else {
+            <div class="col">
+    
+               <user [users]="users" (idUserEventEmitter)="removeUser($event)" (selectUserEventEmitter)="setSelectedUser($event)" />
+    
+            </div>
 
-        </div>
+        }
+        
+
     </div>
 </div>

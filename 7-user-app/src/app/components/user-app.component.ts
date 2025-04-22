@@ -22,6 +22,8 @@ export class UserAppComponent {
 
   userSelected: User;
 
+  open: boolean = false;
+
   constructor(private service: UserService) { 
     this.userSelected = new User;
   }
@@ -44,6 +46,8 @@ export class UserAppComponent {
     });
     
     this.userSelected = new User();
+    this.setOpen();
+
   }
 
   
@@ -73,9 +77,13 @@ export class UserAppComponent {
   }
 
   setSelectedUser(userRow: User): void {
-
     this.userSelected = {... userRow};
+    this.open = true;
 
+  }
+
+  setOpen() {
+    this.open = !this.open;
   }
 
 }
