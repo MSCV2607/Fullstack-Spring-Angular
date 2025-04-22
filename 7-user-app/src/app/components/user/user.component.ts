@@ -20,11 +20,8 @@ export class UserComponent {
 
   onRemoveUser(id : number): void {
 
-    const confirmRemove = confirm("¿Está seguro de eliminar el usuario?");
-    if (confirmRemove) {
-
       this.idUserEventEmitter.emit(id);
-    }
+    
 
   }
 

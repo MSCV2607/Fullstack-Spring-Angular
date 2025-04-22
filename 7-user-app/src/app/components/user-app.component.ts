@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user-app',
@@ -35,11 +36,40 @@ export class UserAppComponent {
     } else {
     this.users = [... this.users, {...user, id: new Date().getTime()}];
     }
+
+    Swal.fire({
+      title: "Guardado",
+      text: "Usuario guardado correctamente",
+      icon: "success"
+    });
+    
     this.userSelected = new User();
   }
 
+  
+
   removeUser(id: number): void {
-    this.users = this.users.filter(user => user.id != id);
+
+    Swal.fire({
+      title: "Seguro que quiere eliminar?",
+      text: "Cuidado los datos del usuario se perderan",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.users = this.users.filter(user => user.id != id);
+        Swal.fire({
+          title: "Eliminado!",
+          text: "Usuario eliminado correctamente",
+          icon: "success"
+        });
+      }
+    });
+
+   
   }
 
   setSelectedUser(userRow: User): void {
