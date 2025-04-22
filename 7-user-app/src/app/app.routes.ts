@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { UserAppComponent } from './components/user-app.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Routes = [
 
@@ -8,23 +9,23 @@ export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'user'
+        redirectTo: 'users'
     },
 
     //-------------------------------------------------------------------------------
 
     {
-    path: 'user',
-    component : UserAppComponent,
+    path: 'users',
+    component : UserComponent,
     },
 
     {
-        path: 'user/create',
+        path: 'users/create',
         component: UserFormComponent,
     },
 
     {
-        path: 'user/edit/:id',
+        path: 'users/edit/:id',
         component: UserFormComponent,
     }
 

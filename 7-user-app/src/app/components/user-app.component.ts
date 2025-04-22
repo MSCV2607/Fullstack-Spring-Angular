@@ -5,11 +5,12 @@ import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import Swal from 'sweetalert2';
 import { RouterOutlet } from '@angular/router';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @Component({
   selector: 'user-app',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavBarComponent],
   templateUrl: './user-app.component.html',
   styleUrls: ['./user-app.component.css'],
 
@@ -24,7 +25,7 @@ export class UserAppComponent {
 
   userSelected: User;
 
-  open: boolean = false;
+
 
   constructor(private service: UserService) { 
     this.userSelected = new User;
@@ -48,7 +49,7 @@ export class UserAppComponent {
     });
     
     this.userSelected = new User();
-    this.setOpen();
+
 
   }
 
@@ -78,14 +79,6 @@ export class UserAppComponent {
    
   }
 
-  setSelectedUser(userRow: User): void {
-    this.userSelected = {... userRow};
-    this.open = true;
 
-  }
-
-  setOpen() {
-    this.open = !this.open;
-  }
 
 }
