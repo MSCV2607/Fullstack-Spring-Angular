@@ -13,6 +13,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 })
 export class UserAppComponent {
 
+
+
   title: string = 'Listado de Usuarios';
 
   users: User[] = [];
@@ -25,6 +27,10 @@ export class UserAppComponent {
 
   addUser(user: User) {
     this.users = [... this.users, {...user, id: new Date().getTime()}];
+  }
+
+  removeUser(id: number): void {
+    this.users = this.users.filter(user => user.id != id);
   }
 
 }

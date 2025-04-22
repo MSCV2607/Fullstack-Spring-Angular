@@ -12,7 +12,7 @@
 
         <div class="col">
 
-           <user [users]="users"/>
+           <user [users]="users" (idUserEventEmitter)="removeUser($event)"/>
 
         </div>
     </div>
