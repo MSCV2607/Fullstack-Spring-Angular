@@ -42,7 +42,9 @@ export class UserAppComponent {
   findUserById() {
     this.sharingData.findUserByIdEventEmitter.subscribe(id => {
 
-      const user = this.users.find(user => user.id == id)
+      const user = this.users.find(user => user.id == id);
+
+      this.sharingData.selectUserEventEmitter.emit(user);
 
     })
   }
