@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import Swal from 'sweetalert2';
-import { RouterOutlet } from '@angular/router';
+import { Route, Router, RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SharingDataService } from '../services/sharing-data.service';
 
@@ -24,18 +24,18 @@ export class UserAppComponent {
 
   users: User[] = [];
 
-  userSelected: User;
 
 
 
-  constructor(private service: UserService, private sharingData: SharingDataService) { 
-    this.userSelected = new User;
+
+  constructor(private service: UserService, private sharingData: SharingDataService, private router: Router) { 
+
   }
 
   ngOnInit() {
     this.service.findAll().subscribe(users => this.users = users);
     this.addUser();
-    this.setSelectedUser();
+
     this.removeUser();
   }
 
@@ -47,13 +47,15 @@ export class UserAppComponent {
     this.users = [... this.users, {...user, id: new Date().getTime()}];
     }
 
+    this.router.navigate(['/users'], { state: { users: this.users } });
+
     Swal.fire({
       title: "Guardado",
       text: "Usuario guardado correctamente",
       icon: "success"
     });
     
-    this.userSelected = new User();
+
   })
 
   }
@@ -74,6 +76,10 @@ export class UserAppComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.users = this.users.filter(user => user.id != id);
+        this.router.navigate(['/users/create'], {skipLocationChange: true}).then(() => { 
+          this.router.navigate(['/users'], { state: { users: this.users } });
+        })
+
         Swal.fire({
           title: "Eliminado!",
           text: "Usuario eliminado correctamente",
@@ -86,10 +92,6 @@ export class UserAppComponent {
   }
 
 
-  setSelectedUser():void {
-    this.sharingData.selectUserEventEmitter.subscribe(userRow => {
-      this.userSelected = {... userRow};
-    })
-  }
+  
 
 }
