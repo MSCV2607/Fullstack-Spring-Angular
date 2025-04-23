@@ -13,16 +13,10 @@ export class SharingDataService {
 
   public selectUserEventEmitter = new EventEmitter();
 
+  public findUserByIdEventEmitter = new EventEmitter()
+
   constructor() {
 
   }
-  getNewUserEventEmitter(): EventEmitter<User> {
-    return this.newUserEventEmitter;
-  }
-  getIdUserEventEmitter(): EventEmitter<number> {
-    return this.idUserEventEmitter;
-  }
-  getSelectUserEventEmitter(): EventEmitter<User> {
-    return this.selectUserEventEmitter;
-  }
+  
 }

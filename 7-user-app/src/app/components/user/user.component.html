@@ -42,7 +42,7 @@
                     </td>
 
                     <td>
-                        <button class="btn btn-info btn-sm" (click)="onSelectUser(user)"> 
+                        <button class="btn btn-info btn-sm" [routerLink]="['/users/edit', user.id]"> 
                             Update
                         </button>
                     </td>
