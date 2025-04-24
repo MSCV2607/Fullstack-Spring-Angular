@@ -1,6 +1,7 @@
 package com.example.usersBackend.services;
 
 
+import com.example.usersBackend.entities.user;
 import com.example.usersBackend.repositories.UserRepositories;
 import org.apache.catalina.User;
 import org.springframework.lang.NonNull;
@@ -13,8 +14,7 @@ import java.util.Optional;
 @Service
 public class UserServicesImpl implements UserService {
 
-
-    private UserRepositories repositories;
+    private final UserRepositories repositories;
 
     public UserServicesImpl(UserRepositories repositories) {
         this.repositories = repositories;
@@ -23,25 +23,24 @@ public class UserServicesImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public List<User> findAll() {
-        return (List) this.repositories.findAll()
+        return repositories.findAll();
     }
 
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public Optional<User> findById(@NonNull Long id) {
         return repositories.findById(id);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public User save(User user) {
         return repositories.save(user);
     }
 
-    @Transactional
     @Override
-    public void delateById(Long id) {
+    @Transactional
+    public void deleteById(Long id) {
         repositories.deleteById(id);
-
     }
 }
