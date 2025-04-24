@@ -9,7 +9,7 @@ public class user {
     //Llave primatia
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto incremental
-    private long id;
+    private Long id;
 
     private String name;
     private String lastname;
