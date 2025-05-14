@@ -8,26 +8,32 @@ import { SharingDataService } from '../../services/sharing-data.service';
   selector: 'user',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './user.component.html',
-
+  templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit {
 
   title: string = 'Listado de usuarios!';
-  
+
   users: User[] = [];
 
   constructor(
     private service: UserService,
     private sharingData: SharingDataService,
-    private router: Router) {}
+    private router: Router) {
+    if (this.router.getCurrentNavigation()?.extras.state) {
+      this.users = this.router.getCurrentNavigation()?.extras.state!['users'];
+    }
+  }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe(users => this.users = users);
+    if (this.users == undefined || this.users == null || this.users.length == 0) {
+      console.log('consulta findAll')
+      this.service.findAll().subscribe(users => this.users = users);
+    }
   }
-  
+
   onRemoveUser(id: number): void {
-    this.sharingData.idUserEventEmitter.emit(id);   
+    this.sharingData.idUserEventEmitter.emit(id);
   }
 
   onSelectedUser(user: User): void {
