@@ -1,46 +1,49 @@
 package com.example.usersBackend.services;
 
-
-import com.example.usersBackend.entities.user;
-import com.example.usersBackend.repositories.UserRepositories;
-import org.apache.catalina.User;
+import com.example.usersBackend.entities.User;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.usersBackend.repositories.UserRepository;
+
+
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServicesImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
-    private final UserRepositories repositories;
+    private UserRepository repository;
 
-    public UserServicesImpl(UserRepositories repositories) {
-        this.repositories = repositories;
+    public UserServiceImpl(UserRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<User> findAll() {
-        return repositories.findAll();
+        return (List) this.repository.findAll();
     }
 
-    @Override
     @Transactional(readOnly = true)
+    @Override
     public Optional<User> findById(@NonNull Long id) {
-        return repositories.findById(id);
+        return repository.findById(id);
     }
 
-    @Override
+
     @Transactional
+    @Override
     public User save(User user) {
-        return repositories.save(user);
+        return repository.save(user);
     }
 
-    @Override
     @Transactional
+    @Override
     public void deleteById(Long id) {
-        repositories.deleteById(id);
+        repository.deleteById(id);
     }
+
 }
