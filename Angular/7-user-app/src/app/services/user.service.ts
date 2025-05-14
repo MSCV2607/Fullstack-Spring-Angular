@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,32 +9,13 @@ import { Observable, of } from 'rxjs';
 export class UserService {
 
   //Datos de ejemplo
-  private users: User[] = [{
-    id:1,
-    name: 'Juan',
-    lastname: 'Pérez',
-    email: 'rolo@gmail.com',
-    username: 'rolo',
-    password: '123456'
-  
-  },
+  private users: User[] = [];
 
-  {
-    id:2,
-    name: 'Jose',
-    lastname: 'Jual',
-    email: 'Jolo@gmail.com',
-    username: 'jota',
-    password: '123456'
-  
-  }
-];
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   //Obtener los usuarios
   //El método findAll() devuelve un Observable de tipo User[]
   findAll(): Observable<User[]>{
-    return of(this.users)
+    return this.http.get<User[]>('http://localhost:8080/api/users');
   }
 }
