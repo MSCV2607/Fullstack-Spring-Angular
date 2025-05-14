@@ -23,4 +23,12 @@ export class UserService {
   findById(id: number) : Observable<User>{
     return this.http.get<User>(this.url + '/' + id);
   }
+
+  create(user: User): Observable<User> {
+    return this.http.post<User>(this.url, user);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(this.url + '/' + user.id, user);
+  }
 }
